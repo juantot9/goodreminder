@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "585627380023",
+    "project_id": "goodreminder-590ef",
+    "storage_bucket": "goodreminder-590ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585627380023:android:5ef6b31069ac2270d012b2",
+        "android_client_info": {
+          "package_name": "com.cm.goodreminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585627380023-1pcr8fjt4sv25puu80vikbm2d7vvu1qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn8h0xN9ogJbM4FAoGr_a3cSJYvgI9laI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585627380023-1pcr8fjt4sv25puu80vikbm2d7vvu1qv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

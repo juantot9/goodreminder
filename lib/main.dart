@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Good Reminder',
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
