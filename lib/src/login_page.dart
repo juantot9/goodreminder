@@ -26,6 +26,10 @@ class _LoginPageState extends State<LoginPage> {
              _passwordTextField(),
             SizedBox(height: 20.0,),
              _buttonLogin(),
+            SizedBox(height: 20.0,),
+             _buttonRegister(),
+            SizedBox(height: 20.0,),
+             _buttonUnregister(),
             ],
           ),
         )
@@ -80,13 +84,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buttonLogin() {
     return StreamBuilder(
       builder:(BuildContext context, AsyncSnapshot snapshot){
-        return RaisedButton(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: Text('Iniciar Sesion'),
+        return ElevatedButton(
+           style: ElevatedButton.styleFrom(
+            minimumSize: const Size(300, 50),
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+          child: Container(
+          //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+            child: Text('Iniciar Sesion'),
           ),
           onPressed: (){},
         );
@@ -94,4 +98,40 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
    
+   Widget _buttonRegister() {
+    return StreamBuilder(
+      builder:(BuildContext context, AsyncSnapshot snapshot){
+        return ElevatedButton(
+           style: ElevatedButton.styleFrom(
+            minimumSize: const Size(300, 50),
+          ),
+          child: Container(
+          //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+            child: Text('Registrarse'),
+          ),
+          onPressed: (){},
+        );
+      } 
+    );
+  }
+
+ Widget _buttonUnregister() {
+    return StreamBuilder(
+      builder:(BuildContext context, AsyncSnapshot snapshot){
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(300, 50),
+          ),
+          child: Container(
+          //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+            child: Text('Entrar Sin Registro'),
+          ),
+
+          onPressed: (){},
+        );
+      } 
+    );
+  }
+
+
 }
