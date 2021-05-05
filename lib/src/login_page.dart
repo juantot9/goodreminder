@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_reminder/servicios/auth_conf.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -8,6 +9,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthConfigurationService _auth = AuthConfigurationService();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -128,7 +131,14 @@ class _LoginPageState extends State<LoginPage> {
           //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
           child: Text('Entrar sin registro'),
         ),
-        onPressed: () {},
+        onPressed: () async {
+          dynamic result = await _auth.signInAnon();
+          if (result == null) {
+            print('Error al entrar de forma anónima');
+          } else {
+            print('Accediendo de forma anónima correctamente'+ result.toString());
+          }
+        },
       );
     });
   }
