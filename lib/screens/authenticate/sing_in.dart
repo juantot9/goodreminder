@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:good_reminder/servicios/auth_conf.dart';
 
-class LoginPage extends StatefulWidget {
-  static String id = 'login_page';
-
+class SignIn extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignInState createState() => _SignInState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignInState extends State<SignIn> {
   final AuthConfigurationService _auth = AuthConfigurationService();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Center(
+        backgroundColor: Colors.blueGrey[100],
+          body: 
+          Center(
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Image.asset(
                 'images/logo.png',
-                height: 100.0,
+                height: 200.0,
               ),
             ),
             SizedBox(
