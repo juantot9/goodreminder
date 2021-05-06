@@ -1,4 +1,19 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:good_reminder/screens/wrapper.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Wrapper()
+    );
+  }
+}
+
+
+/*import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:good_reminder/src/login_page.dart';
 
@@ -24,4 +39,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-}
+}*/
