@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:good_reminder/models/usuario.dart';
 
@@ -24,4 +24,14 @@ class AuthConfigurationService {
       return null;
     }
   }
+
+  Future signOut() async{
+    try{
+      return await _auth.signOut();
+    } catch(e){
+      print(e.toString());
+      return null;
+    }
+  }
+
 }

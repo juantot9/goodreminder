@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:good_reminder/models/usuario.dart';
 import 'package:good_reminder/screens/authenticate/authenticate.dart';
+import 'package:good_reminder/screens/home/home.dart';
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
@@ -11,6 +12,10 @@ class Wrapper extends StatelessWidget {
     print(user);
     
     //DEvolvemos Home o Autenticacion.
-    return Authenticate();
+    if(user == null){
+      return Authenticate();
+    }else{
+      return Home();
+    }
   }
 }
