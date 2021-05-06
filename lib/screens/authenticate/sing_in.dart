@@ -68,7 +68,7 @@ class _SignInState extends State<SignIn> {
           decoration: InputDecoration(
             icon: Icon(Icons.email),
             hintText: 'ejemplo@correo.com',
-            labelText: 'Correo electronico',
+            labelText: 'Correo electrónico',
           ),
           onChanged: (value) {},
         ),
@@ -104,7 +104,7 @@ class _SignInState extends State<SignIn> {
         ),
         child: Container(
           //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-          child: Text('Iniciar Sesion'),
+          child: Text('Iniciar sesión'),
         ),
         onPressed: () {},
       );
@@ -143,7 +143,7 @@ class _SignInState extends State<SignIn> {
           if (result == null) {
             print('Error al entrar de forma anónima');
           } else {
-            print('Accediendo de forma anónima correctamente' +
+            print('Accediendo de forma anónima correctamente ' +
                 result.toString());
           }
         },
