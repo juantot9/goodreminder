@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
                 await _auth.signOut();
               },
               icon: Icon(
-                Icons.child_friendly_rounded,
+                Icons.logout,
                 color: Colors.green,
                 size: 30.0,
               ),

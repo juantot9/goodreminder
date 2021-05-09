@@ -6,6 +6,9 @@ class SignIn extends StatefulWidget {
   _SignInState createState() => _SignInState();
 }
 
+String email= '';
+String password= '';
+
 class _SignInState extends State<SignIn> {
   final AuthConfigurationService _auth = AuthConfigurationService();
   @override
@@ -70,7 +73,9 @@ class _SignInState extends State<SignIn> {
             hintText: 'ejemplo@correo.com',
             labelText: 'Correo electrónico',
           ),
-          onChanged: (value) {},
+          onChanged: (value) {
+            setState(()=>email=value);
+          },
         ),
       );
     });
@@ -89,7 +94,9 @@ class _SignInState extends State<SignIn> {
             hintText: 'Contraseña',
             labelText: 'Contraseña',
           ),
-          onChanged: (value) {},
+          onChanged: (value) {
+            setState(()=>password=value);
+          },
         ),
       );
     });
@@ -106,7 +113,10 @@ class _SignInState extends State<SignIn> {
           //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
           child: Text('Iniciar sesión'),
         ),
-        onPressed: () {},
+        onPressed: ()  async{
+          print(password);
+          print(email);
+        },
       );
     });
   }
