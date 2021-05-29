@@ -4,35 +4,17 @@ import 'package:good_reminder/utils/colors.dart';
 
 enum kMoreOptionsKeys {
   clearAll,
-  moreApps,
-  about,
-  writeReview,
-  shareApp,
-  followUs,
+  logOut
 }
 
 Map<int, String> kMoreOptionsMap = {
   kMoreOptionsKeys.clearAll.index: 'Borrar los hechos',
+  kMoreOptionsKeys.logOut.index: 'Cerrar sesión'
 };
 
 class Utils {
   static void hideKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(new FocusNode());
-  }
-
-  static String getWelcomeMessage() {
-    final hour = DateTime.now().hour;
-    String msg;
-
-    if (hour < 12) {
-      msg = 'Good Morning';
-    } else if (hour < 18) {
-      msg = 'Good Afternoon';
-    } else {
-      msg = 'Good Evening';
-    }
-
-    return msg;
   }
 
   static void launchURL(String url) async {
@@ -43,16 +25,12 @@ class Utils {
     }
   }
 
-  static String getPlatformSpecificUrl(String androidUrl) {
-      return androidUrl;
-  }
-
   static void showCustomDialog(BuildContext context,
       {String title,
       String msg,
-      String noBtnTitle: 'Close',
+      String noBtnTitle: 'Cerrar',
       Function onConfirm,
-      String confirmBtnTitle: 'Yes'}) {
+      String confirmBtnTitle: 'Sí'}) {
     final dialog = AlertDialog(
       title: Text(title),
       content: Text(msg),
