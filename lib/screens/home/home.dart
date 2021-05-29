@@ -111,6 +111,16 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_add_check_sharp),
+            label: 'TodoList'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Calendar')
+        ],
+      ),
     );
   }
 
