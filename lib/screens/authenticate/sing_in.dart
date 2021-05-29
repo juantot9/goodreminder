@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:good_reminder/servicios/auth_conf.dart';
 
+
 class SignIn extends StatefulWidget {
   @override
   _SignInState createState() => _SignInState();
 }
 
-String email= '';
-String password= '';
+String email = '';
+String password = '';
 
 class _SignInState extends State<SignIn> {
   final AuthConfigurationService _auth = AuthConfigurationService();
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
+    return Scaffold(
+        body: SingleChildScrollView(
           child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topRight,
@@ -57,7 +59,6 @@ class _SignInState extends State<SignIn> {
             ),
           ),
         ),
-      ),
     );
   }
 
@@ -74,7 +75,7 @@ class _SignInState extends State<SignIn> {
             labelText: 'Correo electrónico',
           ),
           onChanged: (value) {
-            setState(()=>email=value);
+            setState(() => email = value);
           },
         ),
       );
@@ -95,7 +96,7 @@ class _SignInState extends State<SignIn> {
             labelText: 'Contraseña',
           ),
           onChanged: (value) {
-            setState(()=>password=value);
+            setState(() => password = value);
           },
         ),
       );
@@ -113,7 +114,7 @@ class _SignInState extends State<SignIn> {
           //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
           child: Text('Iniciar sesión'),
         ),
-        onPressed: ()  async{
+        onPressed: () async {
           print(password);
           print(email);
         },
