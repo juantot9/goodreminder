@@ -27,6 +27,9 @@ class _SignInState extends State<SignIn> {
             child: Center(
               child: Column(
                 children: [
+                   SizedBox(
+                    height: 40.0,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Image.asset(
