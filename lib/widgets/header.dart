@@ -15,7 +15,7 @@ class Header extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .headline5
-              .copyWith(fontFamily: 'Lobster', fontSize: 30),
+              .copyWith(fontFamily: 'Lobster Two', fontSize: 30),
         ),
       ),
     );
