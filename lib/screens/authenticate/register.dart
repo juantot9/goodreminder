@@ -19,12 +19,11 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[300],
-        elevation: 0.0,
-        title: Text('Registro'),
-      ),
-      body: Container(
+      
+      body: 
+
+      Container(
+      
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
@@ -32,7 +31,8 @@ class _RegisterState extends State<Register> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomCenter,
                 colors: [Colors.white, Colors.tealAccent[200]])),
-        child: SingleChildScrollView(
+        child: Center(
+          child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: Form(
             key: _formKey,
@@ -114,7 +114,7 @@ class _RegisterState extends State<Register> {
               ],
             ),
           ),
-        ),
+        )),
       ),
     );
   }
