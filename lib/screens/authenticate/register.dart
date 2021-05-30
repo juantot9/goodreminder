@@ -64,8 +64,7 @@ class _RegisterState extends State<Register> {
                           error = 'Please supply a valid email';
                         });
                       }else{
-                         Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignIn()));
+                         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SignIn()));
                       }
                     }
                   }),
@@ -82,4 +81,4 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
-}
+} 

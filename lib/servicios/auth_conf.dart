@@ -25,6 +25,21 @@ class AuthConfigurationService {
     }
   }
 
+  //Sign in con email y contraseña
+  Future singInWhithEmailAndPassword(String email, String password) async {
+    try{
+      
+      UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      User user = result.user;
+      return _userFromFirebaseUser(user);
+
+    }catch(e){
+      print(e.toString());
+      return null;
+    }
+  
+  }
+
   //Registro con email y contraseña
   Future registerWhithEmailAndPassword(String email, String password) async {
     try{
