@@ -19,41 +19,72 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[100],
       appBar: AppBar(
-        backgroundColor: Colors.brown[400],
+        backgroundColor: Colors.blue[300],
         elevation: 0.0,
         title: Text('Registro'),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 20.0),
-              TextFormField(
-                validator: (val) => val.isEmpty ? 'Introduce un email' : null,
-                onChanged: (val) {
-                  setState(() => email = val);
-                },
-              ),
-              SizedBox(height: 20.0),
-              TextFormField(
-                obscureText: true,
-                validator: (val) => val.length < 6
-                    ? 'La contraseña tiene que tener al menos 6 caracteres'
-                    : null,
-                onChanged: (val) {
-                  setState(() => password = val);
-                },
-              ),
-              SizedBox(height: 20.0),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.pink[400]),
-                  child: Text(
-                    'Register',
-                    style: TextStyle(color: Colors.white),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomCenter,
+                colors: [Colors.white, Colors.tealAccent[200]])),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 40.0,
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                TextFormField(
+                  validator: (val) => val.isEmpty ? 'Introduce un email' : null,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.email),
+                    hintText: 'ejemplo@correo.com',
+                    labelText: 'Correo electrónico',
+                  ),
+                  onChanged: (val) {
+                    setState(() => email = val);
+                  },
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.lock),
+                    hintText: 'Contraseña',
+                    labelText: 'Contraseña',
+                  ),
+                  validator: (val) => val.length < 6
+                      ? 'La contraseña tiene que tener al menos 6 caracteres'
+                      : null,
+                  onChanged: (val) {
+                    setState(() => password = val);
+                  },
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(250, 50),
+                  ),
+                  child: Container(
+                    //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+                    child: Text('Registrarse'),
                   ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
@@ -63,22 +94,28 @@ class _RegisterState extends State<Register> {
                         setState(() {
                           error = 'Please supply a valid email';
                         });
-                      }else{
-                         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SignIn()));
+                      } else {
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => SignIn()));
                       }
                     }
-                  }),
-              SizedBox(
-                height: 12.0,
-              ),
-              Text(
-                error,
-                style: TextStyle(color: Colors.red, fontSize: 14.0),
-              )
-            ],
+                  },
+                ),
+                SizedBox(
+                  height: 12.0,
+                ),
+                Text(
+                  error,
+                  style: TextStyle(color: Colors.red, fontSize: 14.0),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-} 
+}
