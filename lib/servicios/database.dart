@@ -9,7 +9,14 @@ final CollectionReference remindersCollection = FirebaseFirestore.instance.colle
 
 Future updateUserData(int id, String titulo, DateTime created, DateTime updated, int status, DateTime dateTodo) async {
 
-//return await remindersCollection.
+return await remindersCollection.doc(uid).set({
+  'id': id,
+  'titulo': titulo,
+  'created': created,
+  'updated': updated,
+  'status': status,
+  'dateTodo': dateTodo
+});
 
 }
 

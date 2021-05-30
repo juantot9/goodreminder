@@ -48,9 +48,9 @@ class AuthConfigurationService {
           email: email, password: password);
       User user = result.user;
 
-      // await DatabaseService(uid: user.uid)
-      //     .updateUserData(0, 'null', null, null, null, null); //fecha formato yyyy-MM-dd hh:mm:ss
-      //     //int id, String titulo, DateTime created, DateTime updated, int status(0 o 1), DateTime dateTodo
+       await DatabaseService(uid: user.uid)
+           .updateUserData(0, 'new user', null, null, 0, null); //fecha formato yyyy-MM-dd hh:mm:ss
+           //int id, String titulo, DateTime created, DateTime updated, int status(0 o 1), DateTime dateTodo
 
       return _userFromFirebaseUser(user);
     } catch (e) {
