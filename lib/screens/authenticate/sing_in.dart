@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:good_reminder/screens/authenticate/register.dart';
 import 'package:good_reminder/servicios/auth_conf.dart';
-
 
 class SignIn extends StatefulWidget {
   @override
@@ -15,53 +15,53 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.white, Colors.tealAccent[200]])),
-            child: Center(
-              child: Column(
-                children: [
-                   SizedBox(
-                    height: 40.0,
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.white, Colors.tealAccent[200]])),
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 40.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Image.asset(
+                    'images/logo.png',
+                    height: 200.0,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Image.asset(
-                      'images/logo.png',
-                      height: 200.0,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  _userTextField(),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  _passwordTextField(),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  _buttonLogin(),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  _buttonRegister(),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  _buttonUnregister(),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                _userTextField(),
+                SizedBox(
+                  height: 30.0,
+                ),
+                _passwordTextField(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buttonLogin(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buttonRegister(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buttonUnregister(),
+              ],
             ),
           ),
         ),
+      ),
     );
   }
 
@@ -136,7 +136,10 @@ class _SignInState extends State<SignIn> {
           //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
           child: Text('Registrarse'),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SignIn()));
+        },
       );
     });
   }
