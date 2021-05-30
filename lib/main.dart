@@ -5,6 +5,7 @@ import 'package:good_reminder/screens/wrapper.dart';
 import 'package:good_reminder/servicios/auth_conf.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +14,7 @@ void main() async {
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark//Iconos en negro, usar light para iconos en blanco
   ));//Para cambiar la barra de estado(la barra de la bateria y la hora)
-  runApp(MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {

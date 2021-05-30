@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:good_reminder/screens/home/todo.dart';
+import 'package:good_reminder/screens/home/calendar.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _HomeState extends State<Home> {
   }
   static List<Widget> _screenOptions = <Widget>[
     TodoList(),
-    Center(child:Text("Aquí irá el calendario"))
+    Calendar()
   ];
   //String _selection;
 
