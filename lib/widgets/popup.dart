@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:good_reminder/screens/authenticate/sing_in.dart';
 import 'package:good_reminder/servicios/auth_conf.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:good_reminder/models/db_wrapper.dart';
 import 'package:good_reminder/utils/utils.dart';
 
@@ -12,7 +13,6 @@ class Popup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return PopupMenuButton<int>(
         elevation: 4,
         icon: Icon(Icons.more_vert),
@@ -28,6 +28,16 @@ class Popup extends StatelessWidget {
             });
           } else if (value == kMoreOptionsKeys.logOut.index) {
             await _auth.signOut();
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => SignIn()));
+
+            FirebaseAuth.instance.authStateChanges().listen((User user) {
+              if (user == null) {
+                print('User is currently signed out!');
+              } else {
+                print('User is signed in!');
+              }
+            });
           }
         },
         itemBuilder: (context) {

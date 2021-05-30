@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:good_reminder/models/usuario.dart';
+import 'package:good_reminder/screens/authenticate/sing_in.dart';
 import 'package:good_reminder/servicios/database.dart';
+import 'package:path/path.dart';
 
 class AuthConfigurationService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -48,9 +51,9 @@ class AuthConfigurationService {
           email: email, password: password);
       User user = result.user;
 
-       await DatabaseService(uid: user.uid)
-           .updateUserData(0, 'new user', null, null, 0, null); //fecha formato yyyy-MM-dd hh:mm:ss
-           //int id, String titulo, DateTime created, DateTime updated, int status(0 o 1), DateTime dateTodo
+      await DatabaseService(uid: user.uid).updateUserData(0, 'new user', null,
+          null, 0, null); //fecha formato yyyy-MM-dd hh:mm:ss
+      //int id, String titulo, DateTime created, DateTime updated, int status(0 o 1), DateTime dateTodo
 
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -61,6 +64,7 @@ class AuthConfigurationService {
 
   //Singout
   Future signOut() async {
+    
     try {
       return await _auth.signOut();
     } catch (e) {
