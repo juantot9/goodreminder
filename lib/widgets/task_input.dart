@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:date_field/date_field.dart';
 
 class TaskInput extends StatefulWidget {
   final Function onSubmitted;
@@ -11,6 +12,7 @@ class TaskInput extends StatefulWidget {
 
 class _TaskInputState extends State<TaskInput> {
   TextEditingController textEditingController = TextEditingController();
+  TextEditingController dateEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +41,22 @@ class _TaskInputState extends State<TaskInput> {
                     border: InputBorder.none),
                 textInputAction: TextInputAction.done,
                 controller: textEditingController,
-                onEditingComplete: () {
+                /*onEditingComplete: () {
                   widget.onSubmitted(controller: textEditingController);
+                  widget.onSubmitted(controller: dateEditingController);
+                },*/
+              ),
+            ),
+            Expanded(
+              child: DateTimeField(
+                selectedDate: selectedDate,
+                mode:DateTimeFieldPickerMode.date,
+                decoration: InputDecoration(
+                    hintText: '¿Y cuándo?',
+                    border: InputBorder.none),
+                onDateSelected: (DateTime value) {
+                  widget.onSubmitted(value, controller: textEditingController);
+                  // widget.onSubmitted(controller: dateEditingController);
                 },
               ),
             ),
@@ -49,4 +65,5 @@ class _TaskInputState extends State<TaskInput> {
       ),
     );
   }
+  DateTime selectedDate = DateTime.now();
 }

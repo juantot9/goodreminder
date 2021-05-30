@@ -16,7 +16,8 @@ CREATE TABLE "todos" (
 	 "title" TEXT NOT NULL,
 	 "created" text NOT NULL,
 	 "updated" TEXT NOT NULL,
-	 "status" integer DEFAULT $kTodosStatusActive
+	 "status" integer DEFAULT $kTodosStatusActive,
+   "dateTodo" TEXT NOT NULL
 );
 ''';
 

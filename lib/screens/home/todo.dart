@@ -8,7 +8,6 @@ import 'package:good_reminder/widgets/popup.dart';
 import 'package:good_reminder/widgets/task_input.dart';
 import 'package:good_reminder/widgets/todo.dart';
 
-
 class TodoList extends StatefulWidget {
   @override
   _TodoListState createState() => _TodoListState();
@@ -16,93 +15,96 @@ class TodoList extends StatefulWidget {
 
 class _TodoListState extends State<TodoList> {
   String titulo = "Good reminder";
-    @override
+  @override
   void initState() {
     super.initState();
     getTodosAndDones();
   }
+
+  DateTime selectedDate = DateTime.now();
   List<Model.TodoItem> todos;
   List<Model.TodoItem> dones;
   Widget build(BuildContext context) {
     return SafeArea(
-        child: GestureDetector(
-          onTap: () {
-            Utils.hideKeyboard(context);
-          },
-          child: CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-                backgroundColor: Theme.of(context).backgroundColor,
-                floating: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Column(
-                    children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Header(
-                                      msg: titulo,
+      child: GestureDetector(
+        onTap: () {
+          Utils.hideKeyboard(context);
+        },
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              backgroundColor: Theme.of(context).backgroundColor,
+              floating: true,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Column(
+                  children: <Widget>[
+                    Stack(
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Header(
+                                    msg: titulo,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 35),
+                                    child: Popup(
+                                      getTodosAndDones: getTodosAndDones,
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.only(top: 35),
-                                      child: Popup(
-                                        getTodosAndDones: getTodosAndDones,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                              Container(
-                                margin: EdgeInsets.only(top: 20),
-                                child: TaskInput(
-                                  onSubmitted: addTaskInTodo,
-                                ), // Add Todos
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                expandedHeight: 200,
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    switch (index) {
-                      case 0:
-                        return Todo(
-                          todos: todos,
-                          onTap: markTodoAsDone,
-                          onDeleteTask: deleteTask,
-                        ); // Active todos
-                      case 1:
-                        return SizedBox(
-                          height: 30,
-                        );
-                      default:
-                        return Done(
-                          dones: dones,
-                          onTap: markDoneAsTodo,
-                          onDeleteTask: deleteTask,
-                        ); // Done todos
-                    }
-                  },
-                  childCount: 3,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 20),
+                              child: TaskInput(
+                                onSubmitted: addTaskInTodo,
+                              ), // Add Todos
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+              expandedHeight: 171,
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  switch (index) {
+                    case 0:
+                      return Todo(
+                        todos: todos,
+                        onTap: markTodoAsDone,
+                        onDeleteTask: deleteTask,
+                      ); // Active todos
+                    case 1:
+                      return SizedBox(
+                        height: 30,
+                      );
+                    default:
+                      return Done(
+                        dones: dones,
+                        onTap: markDoneAsTodo,
+                        onDeleteTask: deleteTask,
+                      ); // Done todos
+                  }
+                },
+                childCount: 3,
+              ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
+
   void getTodosAndDones() async {
     final _todos = await DBWrapper.sharedInstance.getTodos();
     final _dones = await DBWrapper.sharedInstance.getDones();
@@ -113,8 +115,10 @@ class _TodoListState extends State<TodoList> {
     });
   }
 
-  void addTaskInTodo({@required TextEditingController controller}) {
+  void addTaskInTodo(dateController,
+      {@required TextEditingController controller}) {
     final inputText = controller.text.trim();
+    final DateTime inputDate = dateController;
 
     if (inputText.length > 0) {
       // Add todos
@@ -132,6 +136,7 @@ class _TodoListState extends State<TodoList> {
     }
 
     controller.text = '';
+    dateController = null;
   }
 
   void markTodoAsDone({@required int pos}) {
