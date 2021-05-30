@@ -138,7 +138,7 @@ class _SignInState extends State<SignIn> {
         ),
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignIn()));
+              context, MaterialPageRoute(builder: (context) => Register()));
         },
       );
     });
