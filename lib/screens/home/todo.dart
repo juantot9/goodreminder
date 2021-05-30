@@ -115,10 +115,10 @@ class _TodoListState extends State<TodoList> {
     });
   }
 
-  void addTaskInTodo(dateController,
-      {@required TextEditingController controller}) {
+  void addTaskInTodo(
+      {@required TextEditingController controller,
+      @required DateTime dateValue}) {
     final inputText = controller.text.trim();
-    final DateTime inputDate = dateController;
 
     if (inputText.length > 0) {
       // Add todos
@@ -127,7 +127,7 @@ class _TodoListState extends State<TodoList> {
         created: DateTime.now(),
         updated: DateTime.now(),
         status: Model.TodoStatus.active.index,
-        dateTodo: inputDate,
+        dateTodo: dateValue,
       );
 
       DBWrapper.sharedInstance.addTodo(todo);
@@ -137,7 +137,6 @@ class _TodoListState extends State<TodoList> {
     }
 
     controller.text = '';
-    dateController = null;
   }
 
   void markTodoAsDone({@required int pos}) {

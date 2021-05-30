@@ -106,12 +106,30 @@ class _TodoState extends State<Todo> {
                       padding: EdgeInsets.only(
                           left: 10, top: 15, right: 20, bottom: 15),
                       child: Text(
-                        text + " " + DateFormat("dd/MM/yyyy").format(date),
+                        text,
                         overflow: TextOverflow.clip,
                         textAlign: TextAlign.justify,
-                        style: Theme.of(context).textTheme.headline6.copyWith(
+                        style: TextStyle(
+                              fontSize: 18,
                               color: Color(0xff373640),
                             ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          left: 40, top: 0, right: 0, bottom: 5),
+                      margin: EdgeInsets.only(
+                          left: 32, top: 25),
+                      child: Text(
+                        DateFormat("dd/MM/yyyy").format(date),
+                        overflow: TextOverflow.clip,
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.blueGrey[200]
+                          ),
                       ),
                     ),
                   ),

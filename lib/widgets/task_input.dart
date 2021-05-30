@@ -24,7 +24,7 @@ class _TaskInputState extends State<TaskInput> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 5),
+              margin: EdgeInsets.only(top: 9),
               width: 40,
               child: Icon(
                 Icons.add,
@@ -38,25 +38,28 @@ class _TaskInputState extends State<TaskInput> {
                 maxLines: 2,
                 decoration: InputDecoration(
                     hintText: '¿Qué vas a hacer?',
+                    hintStyle: TextStyle(fontSize: 16, color: Colors.grey[600]),
                     border: InputBorder.none),
                 textInputAction: TextInputAction.done,
                 controller: textEditingController,
-                /*onEditingComplete: () {
-                  widget.onSubmitted(controller: textEditingController);
-                  widget.onSubmitted(controller: dateEditingController);
-                },*/
+                onEditingComplete: () {
+                  widget.onSubmitted(controller: textEditingController, dateValue: DateTime.now());
+                },
               ),
             ),
             Expanded(
-              child: DateTimeFormField(
-                mode:DateTimeFieldPickerMode.date,
+              child: DateTimeField(
+                mode: DateTimeFieldPickerMode.date,
                 decoration: InputDecoration(
-                    border: InputBorder.none,
-                    labelText: "Selecciona la fecha"),
+                  hintText: 'Seleccionar fecha',
+                  hintStyle: TextStyle(fontSize: 16, color: Colors.cyan[700]),
+                  border: InputBorder.none,
+                ),
                 onDateSelected: (DateTime value) {
-                  widget.onSubmitted(value, controller: textEditingController);
-                  // widget.onSubmitted(controller: dateEditingController);
+                  widget.onSubmitted(controller: textEditingController, dateValue: value);
                 },
+                selectedDate: null,
+                // onSaved: ,
               ),
             ),
           ],
@@ -64,5 +67,4 @@ class _TaskInputState extends State<TaskInput> {
       ),
     );
   }
-  DateTime selectedDate = DateTime.now();
 }
