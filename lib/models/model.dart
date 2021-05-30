@@ -6,8 +6,9 @@ class TodoItem {
   DateTime created;
   DateTime updated;
   int status;
+  DateTime dateTodo;
 
-  TodoItem({this.id, this.title, this.created, this.updated, this.status});
+  TodoItem({this.id, this.title, this.created, this.updated, this.status, this.dateTodo});
 
   Map<String, dynamic> toMap() {
     return {
@@ -16,6 +17,7 @@ class TodoItem {
       'created': created.toString(),
       'updated': updated.toString(),
       'status': status,
+      'dateTodo': dateTodo.toString(),
     };
   }
 
@@ -25,6 +27,7 @@ class TodoItem {
       'created': created.toString(),
       'updated': updated.toString(),
       'status': TodoStatus.active.index,
+      'dateTodo': dateTodo.toString(),
     };
   }
 }

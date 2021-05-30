@@ -37,7 +37,7 @@ class _TaskInputState extends State<TaskInput> {
                 minLines: 1,
                 maxLines: 2,
                 decoration: InputDecoration(
-                    hintText: '¿Qué quieres hacer?',
+                    hintText: '¿Qué vas a hacer?',
                     border: InputBorder.none),
                 textInputAction: TextInputAction.done,
                 controller: textEditingController,
@@ -48,12 +48,11 @@ class _TaskInputState extends State<TaskInput> {
               ),
             ),
             Expanded(
-              child: DateTimeField(
-                selectedDate: selectedDate,
+              child: DateTimeFormField(
                 mode:DateTimeFieldPickerMode.date,
                 decoration: InputDecoration(
-                    hintText: '¿Y cuándo?',
-                    border: InputBorder.none),
+                    border: InputBorder.none,
+                    labelText: "Selecciona la fecha"),
                 onDateSelected: (DateTime value) {
                   widget.onSubmitted(value, controller: textEditingController);
                   // widget.onSubmitted(controller: dateEditingController);

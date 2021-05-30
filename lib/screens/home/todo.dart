@@ -72,7 +72,7 @@ class _TodoListState extends State<TodoList> {
                   ],
                 ),
               ),
-              expandedHeight: 171,
+              expandedHeight: 187,
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -127,6 +127,7 @@ class _TodoListState extends State<TodoList> {
         created: DateTime.now(),
         updated: DateTime.now(),
         status: Model.TodoStatus.active.index,
+        dateTodo: inputDate,
       );
 
       DBWrapper.sharedInstance.addTodo(todo);

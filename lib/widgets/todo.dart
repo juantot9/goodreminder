@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:good_reminder/widgets/shared.dart';
 import 'package:good_reminder/models/model.dart' as Model;
 import 'package:good_reminder/utils/colors.dart';
@@ -47,6 +48,7 @@ class _TodoState extends State<Todo> {
                     duration: Duration(seconds: 1),
                     child: getTaskItem(
                       widget.todos[i].title,
+                      widget.todos[i].dateTodo,
                       index: i,
                       onTap: () {
                         setState(() {
@@ -72,7 +74,7 @@ class _TodoState extends State<Todo> {
     );
   }
 
-  Widget getTaskItem(String text,
+  Widget getTaskItem(String text, DateTime date,
       {@required int index, @required Function onTap}) {
     return Container(
         child: Column(
@@ -104,7 +106,7 @@ class _TodoState extends State<Todo> {
                       padding: EdgeInsets.only(
                           left: 10, top: 15, right: 20, bottom: 15),
                       child: Text(
-                        text,
+                        text + " " + DateFormat("dd/MM/yyyy").format(date),
                         overflow: TextOverflow.clip,
                         textAlign: TextAlign.justify,
                         style: Theme.of(context).textTheme.headline6.copyWith(

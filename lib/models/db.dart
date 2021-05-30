@@ -9,12 +9,12 @@ const kTodosStatusActive = 0;
 const kTodosStatusDone = 1;
 
 const kDatabaseName = 'todos.db';
-const kDatabaseVersion = 1;
+const kDatabaseVersion = 2;
 const kSQLCreateStatement = '''
 CREATE TABLE "todos" (
 	 "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	 "title" TEXT NOT NULL,
-	 "created" text NOT NULL,
+	 "created" TEXT NOT NULL,
 	 "updated" TEXT NOT NULL,
 	 "status" integer DEFAULT $kTodosStatusActive,
    "dateTodo" TEXT NOT NULL
@@ -35,7 +35,7 @@ class DB {
   Future<Database> initDB() async {
     Directory docsDirectory = await getApplicationDocumentsDirectory();
     String path = join(docsDirectory.path, kDatabaseName);
-
+    
     return await openDatabase(path, version: kDatabaseVersion,
         onCreate: (Database db, int version) async {
       await db.execute(kSQLCreateStatement);
@@ -77,6 +77,7 @@ class DB {
         created: DateTime.parse(maps[i]['created']),
         updated: DateTime.parse(maps[i]['updated']),
         status: maps[i]['status'],
+        dateTodo: DateTime.parse(maps[i]['dateTodo']),
       );
     });
   }
