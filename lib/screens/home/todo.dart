@@ -108,7 +108,7 @@ class _TodoListState extends State<TodoList> {
   void getTodosAndDones() async {
     final _todos = await DBWrapper.sharedInstance.getTodos();
     final _dones = await DBWrapper.sharedInstance.getDones();
-
+  
     setState(() {
       todos = _todos;
       dones = _dones;

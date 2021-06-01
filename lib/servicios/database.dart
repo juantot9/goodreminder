@@ -24,8 +24,7 @@ class DatabaseService {
     return snapshot.docs.map((doc) {
       return Reminder(
         id: (doc.data() as Map)['id'] ?? null,
-        title: (doc.data() as Map)['title'] ?? null,
-        created: (doc.data() as Map)['created'] ?? null,
+        title: (doc.data()  as Map)['title'] ?? null,
         updated: (doc.data() as Map)['updated'] ?? null,
         status: (doc.data() as Map)['status'] ?? null,
         dateTodo: (doc.data() as Map)['dateTodo'] ?? null,

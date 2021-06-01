@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:good_reminder/models/reminder.dart';
+import 'package:good_reminder/screens/home/reminder_list.dart';
 import 'package:good_reminder/screens/home/todo.dart';
 import 'package:good_reminder/screens/home/calendar.dart';
 import 'package:good_reminder/servicios/database.dart';
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  static List<Widget> _screenOptions = <Widget>[TodoList(), Calendar()];
+  static List<Widget> _screenOptions = <Widget>[ReminderList(),TodoList(), Calendar()];
   //String _selection;
 
   @override

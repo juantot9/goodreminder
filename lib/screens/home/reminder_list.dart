@@ -10,13 +10,21 @@ class ReminderList extends StatefulWidget {
 class _ReminderListState extends State<ReminderList> {
   @override
   Widget build(BuildContext context) {
-
     final reminders = Provider.of<List<Reminder>>(context);
-    //TODO reminders.forEach((reminder) { print(reminder.id) });
 
+    reminders.forEach((reminder) {
+      print(reminder.id);
+      print(reminder.title);
+      print(reminder.created);
+      print(reminder.updated);
+      print(reminder.status);
+      print(reminder.dateTodo);
+    });
 
-    return Container(
-      
-    );
+    // for (var doc in brews.documents) {
+    //   print(doc.data);
+    // }
+
+    return Container();
   }
 }

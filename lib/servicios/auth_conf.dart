@@ -51,8 +51,13 @@ class AuthConfigurationService {
           email: email, password: password);
       User user = result.user;
 
-      await DatabaseService(uid: user.uid).updateUserData(0, 'new user', null,
-          null, 0, null); //fecha formato yyyy-MM-dd hh:mm:ss
+      await DatabaseService(uid: user.uid).updateUserData(
+          0,
+          'new user',
+          DateTime.now(),
+          DateTime.now(),
+          0,
+          DateTime.now()); //fecha formato yyyy-MM-dd hh:mm:ss
       //int id, String titulo, DateTime created, DateTime updated, int status(0 o 1), DateTime dateTodo
 
       return _userFromFirebaseUser(user);
@@ -64,7 +69,6 @@ class AuthConfigurationService {
 
   //Singout
   Future signOut() async {
-    
     try {
       return await _auth.signOut();
     } catch (e) {
