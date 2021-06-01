@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:good_reminder/models/model.dart';
-import 'package:good_reminder/models/reminder.dart';
 
 class DatabaseService {
   final String uid;

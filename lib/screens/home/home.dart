@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:good_reminder/models/model.dart';
-import 'package:good_reminder/models/reminder.dart';
 import 'package:good_reminder/screens/home/reminder_list.dart';
 import 'package:good_reminder/screens/home/todo.dart';
 import 'package:good_reminder/screens/home/calendar.dart';
+import 'package:good_reminder/servicios/auth_conf.dart';
 import 'package:good_reminder/servicios/database.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,7 @@ class _HomeState extends State<Home> {
       value: DatabaseService().reminders,
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        body: ReminderList(),
+        body: _screenOptions[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
