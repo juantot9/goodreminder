@@ -8,7 +8,7 @@ import 'package:path/path.dart';
 class AuthConfigurationService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Usuario _userFromFirebaseUser(User user) {
-    return user != null ? Usuario(uid: user.uid) : null;
+    return user != null ? Usuario(uid: user.uid, typeof: user.isAnonymous) : null;
   }
 
   Stream<Usuario> get user {

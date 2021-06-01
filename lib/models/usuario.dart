@@ -1,6 +1,6 @@
 class Usuario {
   final String uid;
-  final String typeof;
+  final bool typeof;
 
   Usuario({this.uid, this.typeof});
 }
