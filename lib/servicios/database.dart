@@ -10,7 +10,16 @@ class DatabaseService {
 
   Future updateUserData(int id, String title, DateTime created,
       DateTime updated, int status, DateTime dateTodo) async {
-    return await remindersCollection.doc(uid).set({
+    int acu = 0;
+    FirebaseFirestore.instance
+        .collection('reminders')
+        .doc(this.uid)
+        .get()
+        .then((value) => acu + 1);
+    return await remindersCollection
+        .doc(uid)
+        .collection('tarea_' + acu.toString())
+        .add({
       'id': id,
       'title': title,
       'created': created.toString(),
@@ -24,18 +33,19 @@ class DatabaseService {
     return snapshot.docs.map((doc) {
       return TodoItem(
         id: (doc.data() as Map)['id'] ?? 0,
-        title: (doc.data()  as Map)['title'].toString() ?? "",
-        updated: DateTime.parse((doc.data() as Map)['updated']) ?? DateTime.now(),
-        created: DateTime.parse((doc.data() as Map)['created']) ?? DateTime.now(),
+        title: (doc.data() as Map)['title'].toString() ?? "",
+        updated:
+            DateTime.parse((doc.data() as Map)['updated']) ?? DateTime.now(),
+        created:
+            DateTime.parse((doc.data() as Map)['created']) ?? DateTime.now(),
         status: (doc.data() as Map)['status'] ?? 0,
-        dateTodo: DateTime.parse((doc.data() as Map)['dateTodo']) ?? DateTime.now(),
+        dateTodo:
+            DateTime.parse((doc.data() as Map)['dateTodo']) ?? DateTime.now(),
       );
     }).toList();
   }
 
   Stream<List<TodoItem>> get reminders {
-    return remindersCollection
-        .snapshots()
-        .map(_reminderListFromSnapshot);
+    return remindersCollection.snapshots().map(_reminderListFromSnapshot);
   }
 }
