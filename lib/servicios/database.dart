@@ -8,19 +8,20 @@ class DatabaseService {
   final CollectionReference remindersCollection =
       FirebaseFirestore.instance.collection('reminders');
 
-  Future updateUserData(int id, String title, DateTime created,
+  Future createUserData(int id, String title, DateTime created,
       DateTime updated, int status, DateTime dateTodo) async {
     int acu = 0;
     FirebaseFirestore.instance
         .collection('reminders')
         .doc(this.uid)
+        .collection('tareas')
         .get()
         .then((value) => acu + 1);
     return await remindersCollection
         .doc(uid)
-        .collection('tarea_' + acu.toString())
-        .add({
-      'id': id,
+        .collection('tareas')
+        .doc("tarea_"+ acu.toString()).set({
+      'id': acu + 1,
       'title': title,
       'created': created.toString(),
       'updated': updated.toString(),

@@ -51,7 +51,7 @@ class AuthConfigurationService {
           email: email, password: password);
       User user = result.user;
 
-      await DatabaseService(uid: user.uid).updateUserData(
+      await DatabaseService(uid: user.uid).createUserData(
           0,
           'new user',
           DateTime.now(),
