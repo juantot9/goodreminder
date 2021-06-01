@@ -45,6 +45,7 @@ class DB {
   void createTodo(TodoItem todo) async {
     final db = await database;
     await db.insert(kTableTodos, todo.toMapAutoID());
+  
   }
 
   void updateTodo(TodoItem todo) async {
