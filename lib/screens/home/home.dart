@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:good_reminder/models/model.dart';
 import 'package:good_reminder/models/reminder.dart';
 import 'package:good_reminder/screens/home/reminder_list.dart';
 import 'package:good_reminder/screens/home/todo.dart';
@@ -20,17 +21,17 @@ class _HomeState extends State<Home> {
     });
   }
 
-  static List<Widget> _screenOptions = <Widget>[ReminderList(),TodoList(), Calendar()];
+  static List<Widget> _screenOptions = <Widget>[TodoList(), Calendar()];
   //String _selection;
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<Reminder>>.value(
+    return StreamProvider<List<TodoItem>>.value(
       initialData: null,
       value: DatabaseService().reminders,
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        body: _screenOptions.elementAt(_selectedIndex),
+        body: ReminderList(),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

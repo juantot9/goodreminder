@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:good_reminder/models/reminder.dart';
+import 'package:good_reminder/models/model.dart';
 import 'package:provider/provider.dart';
 
 class ReminderList extends StatefulWidget {
@@ -10,8 +10,8 @@ class ReminderList extends StatefulWidget {
 class _ReminderListState extends State<ReminderList> {
   @override
   Widget build(BuildContext context) {
-    final reminders = Provider.of<List<Reminder>>(context);
-
+    final reminders = Provider.of<List<TodoItem>>(context);
+    if (reminders != null){
     reminders.forEach((reminder) {
       print(reminder.id);
       print(reminder.title);
@@ -20,7 +20,7 @@ class _ReminderListState extends State<ReminderList> {
       print(reminder.status);
       print(reminder.dateTodo);
     });
-
+    }
     // for (var doc in brews.documents) {
     //   print(doc.data);
     // }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:good_reminder/models/model.dart';
 import 'package:good_reminder/models/reminder.dart';
 
 class DatabaseService {
@@ -20,19 +21,20 @@ class DatabaseService {
     });
   }
 
-  List<Reminder> _reminderListFromSnapshot(QuerySnapshot snapshot) {
+  List<TodoItem> _reminderListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
-      return Reminder(
-        id: (doc.data() as Map)['id'] ?? null,
-        title: (doc.data()  as Map)['title'] ?? null,
-        updated: (doc.data() as Map)['updated'] ?? null,
-        status: (doc.data() as Map)['status'] ?? null,
-        dateTodo: (doc.data() as Map)['dateTodo'] ?? null,
+      return TodoItem(
+        id: (doc.data() as Map)['id'] ?? 0,
+        title: (doc.data()  as Map)['title'].toString() ?? "",
+        updated: DateTime.parse((doc.data() as Map)['updated']) ?? DateTime.now(),
+        created: DateTime.parse((doc.data() as Map)['created']) ?? DateTime.now(),
+        status: (doc.data() as Map)['status'] ?? 0,
+        dateTodo: DateTime.parse((doc.data() as Map)['dateTodo']) ?? DateTime.now(),
       );
     }).toList();
   }
 
-  Stream<List<Reminder>> get reminders {
+  Stream<List<TodoItem>> get reminders {
     return remindersCollection
         .snapshots()
         .map(_reminderListFromSnapshot);
