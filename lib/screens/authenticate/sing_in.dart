@@ -26,7 +26,6 @@ class _SignInState extends State<SignIn> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomCenter,
                 colors: [Colors.white, Colors.tealAccent[200]])),
-        
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: Form(
@@ -134,7 +133,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   child: Container(
                     //  padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-                    
+
                     child: Text('Entrar sin registro'),
                   ),
                   onPressed: () async {
@@ -144,6 +143,8 @@ class _SignInState extends State<SignIn> {
                     } else {
                       print('Accediendo de forma anónima correctamente ' +
                           result.toString());
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Home()));
                     }
                   },
                 )
